@@ -7,7 +7,7 @@ counter=0
 PREV_TOTAL=0
 PREV_IDLE=0
 mem_total=$(cat /proc/meminfo | grep "MemTotal" | grep -Eo "[0-9]*") # in kB
-# echo "counter timestamp CPU($) MEMORY(%)" >> "./$dest/data/"
+echo "counter timestamp CPU($) MEMORY(%)" >> "./$dest/usage.txt"
 while [[ $counter -le $timer ]]; do
   # Get the total CPU statistics, discarding the 'cpu ' prefix.
   # Get Free memory
