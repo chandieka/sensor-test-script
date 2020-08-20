@@ -39,8 +39,9 @@ fi
 # - Network Bandwitdh on an interface
 
 echo "Data capture start for $hour:$min:$sec"
-./mon-net.sh $recordTime ./$testName/data/ eth0 & 
-./resource-usage.sh $recordTime ./$testName/data/ &
+./mon-net.sh $recordTime ./$testName/data/ $int & 
+./usage.sh $recordTime ./$testName/data &
+# ./resource-usage.sh $recordTime ./$testName/data/ &
 # nmon -ft -s $time -c $recordTime -m ./$testName/data/ 
 echo "traffic replay start!!"
 

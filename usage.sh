@@ -28,8 +28,8 @@ while [[ $counter -le $timer ]]; do
   # Calculate the memory usage
   mem_usage=$(echo "scale=2; (($mem_total-$mem_free)*100)/$mem_total" | bc)
   # output the data
-  echo "$counter $(date +"%D %T:%N") $DIFF_USAGE% $mem_usage%"
-  # echo "$counter $(date +"%D %T:%N") $DIFF_USAGE% $mem_usage%" >> "./$dest/data/"
+  # echo "$counter $(date +"%D %T:%N") $DIFF_USAGE% $mem_usage%"
+  echo "$counter $(date +"%D %T:%N") $DIFF_USAGE% $mem_usage%" >> "./$dest/usage.txt"
 
   # Remember the total and idle CPU times for the next check.
   PREV_TOTAL="$TOTAL"
