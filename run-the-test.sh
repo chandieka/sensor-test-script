@@ -10,6 +10,7 @@ clear;
 
 # constant 
 pcapPath="/home/user/pcaps/sample_data/SOC-sample-20200716/" # Directory where all the pcap will be replay at
+statsPath=""
 time="1"     # one second interval for data capture
 int="eth0"  # network interface
 recordTime=$((20 + 3)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
@@ -46,7 +47,7 @@ echo "Data capture start for $hour:$min:$sec"
 echo "traffic replay start!!"
 
 # start replaying the traffic
-# sudo timeout -k $((recordTime + 5)) --signal=SIGINT $recordTime tcpreplay -i virbr1 $pcapPath/* >> ./$testName/test.log &
+# sudo timeout -k $((recordTime + 5)) --signal=SIGINT $recordTime tcpreplay -i $int $pcapPath/* >> ./$testName/test.log &
 
 # timer
 while [ $hour -ge 0 ]; do
@@ -62,6 +63,6 @@ while [ $hour -ge 0 ]; do
         min=59;
         let "hour=hour-1";
 done;
-
+cp $statsPath/stats.log ./$testName/data/stats.log
 echo "Test Finished!!!"
 # finish the test...

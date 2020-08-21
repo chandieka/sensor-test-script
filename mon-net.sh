@@ -20,6 +20,6 @@ do
     rxmbps=$(echo "scale=2; $rxbytes*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);
 
-    echo "$counter $(date +"%D %T:%N") TX $txmbps Mbps RX $rxmbps Mbps" >> ./$dest/network.txt
+    echo "$counter $(date +"%D %T:%N") $txmbps $rxmbps" >> ./$dest/network.txt
     counter=$((counter + 1))
 done 

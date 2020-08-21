@@ -1,5 +1,6 @@
 #!/bin/bash
 # by Paul Colby (http://colby.id.au), no rights reserved ;)
+# by chandieka 
 
 timer=$1
 dest=$2
