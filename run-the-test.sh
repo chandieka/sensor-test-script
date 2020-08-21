@@ -9,10 +9,10 @@ clear;
 #   - execute the script
 
 # constant 
-pcapPath="/home/user/pcaps/sample_data/SOC-sample-20200716/" # Directory where all the pcap will be replay at
+pcapPath="/home/user/sample_data/" # Directory where all the pcap will be replay at
 statsPath=""
 time="1"     # one second interval for data capture
-int="eth0"  # network interface
+int="eth1"  # network interface
 recordTime=$((20 + 3)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
 
 sec=$((recordTime % 60));

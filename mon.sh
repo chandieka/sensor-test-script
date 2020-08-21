@@ -18,5 +18,4 @@ do
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);
 
     echo "$counter $(date +"%D %T:%N") TX $txmbps Mbps RX $rxmbps Mbps"
-
 done 

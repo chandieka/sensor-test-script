@@ -3,7 +3,10 @@ counter=0
 capint=$1
 dest=$2
 int=$3
-echo "counter timestamp TX(Mbps) RX(Mbps)" >> ./$dest/network.txt
+header="%-7s %-28s %-9s %-9s\n"
+format="%-7s %-28s %-9s %-9s\n"
+# printf "$header" "COUNTER" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" 
+printf "$header" "COUNTER" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" >> ./$dest/network.txt
 while [[ $counter -le $capint ]];
 do
     txbytes_old="`cat /sys/class/net/$3/statistics/tx_bytes`";
@@ -20,6 +23,7 @@ do
     rxmbps=$(echo "scale=2; $rxbytes*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);
 
-    echo "$counter $(date +"%D %T:%N") $txmbps $rxmbps" >> ./$dest/network.txt
+    # printf "$format" "$counter" "$(date +"%D %T:%N")" "$txmbps" "$rxmbps" >> ./$dest/network.txt
+    printf "$format" "$counter" "$(date +"%D %T:%N")" "$txmbps" "$rxmbps" >> ./$dest/network.txt
     counter=$((counter + 1))
 done 
