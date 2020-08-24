@@ -10,7 +10,7 @@ clear;
 
 # constant 
 pcapPath="/home/user/sample_data/" # Directory where all the pcap will be replay at
-statsPath=""
+statsPath="/nsm/sensor_data/virtual;socdemo-sensor-eth1/"
 time="1"     # one second interval for data capture
 int="eth1"  # network interface
 mult="1.0" # replay speed multiplier
@@ -48,7 +48,8 @@ echo "Data capture start for $hour:$min:$sec"
 echo "traffic replay start!!"
 
 # start replaying the traffic
-sudo timeout -k $((recordTime + 5)) --signal=SIGINT $recordTime tcpreplay -i $int --multiplier="$mult" $pcapPath/* >> ./$testName/test.log &
+sudo tcpreplay -i $int --multiplier="$mult" $pcapPath/* >> ./$testName/test.log &
+tcpPID=$!;
 
 # timer
 while [ $hour -ge 0 ]; do
@@ -64,6 +65,7 @@ while [ $hour -ge 0 ]; do
         min=59;
         let "hour=hour-1";
 done;
+kill -s SIGINT $tcpPID;
 cp $statsPath/stats.log ./$testName/data/stats.log
 echo "Test Finished!!!"
 # finish the test...
