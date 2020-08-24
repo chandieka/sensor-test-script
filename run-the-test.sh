@@ -13,6 +13,7 @@ pcapPath="/home/user/sample_data/" # Directory where all the pcap will be replay
 statsPath=""
 time="1"     # one second interval for data capture
 int="eth1"  # network interface
+mult="1.0" # replay speed multiplier
 recordTime=$((20 + 3)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
 
 sec=$((recordTime % 60));
@@ -47,7 +48,7 @@ echo "Data capture start for $hour:$min:$sec"
 echo "traffic replay start!!"
 
 # start replaying the traffic
-# sudo timeout -k $((recordTime + 5)) --signal=SIGINT $recordTime tcpreplay -i $int $pcapPath/* >> ./$testName/test.log &
+sudo timeout -k $((recordTime + 5)) --signal=SIGINT $recordTime tcpreplay -i $int --multiplier="$mult" $pcapPath/* >> ./$testName/test.log &
 
 # timer
 while [ $hour -ge 0 ]; do

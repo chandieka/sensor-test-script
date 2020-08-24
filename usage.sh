@@ -10,7 +10,7 @@ PREV_IDLE=0
 mem_total=$(cat /proc/meminfo | grep "MemTotal" | grep -Eo "[0-9]*") # in kB
 header="%-7s %-28s %-8s %-8s\n"
 format="%-7s %-28s %-8s %-8s\n"
-# echo "counter timestamp CPU($) MEMORY(%)" >> "./$dest/usage.txt"
+# printf "$header" "COUNTER" "TIMESTAMP" "CPU(%)" "MEMORY(%)"
 printf "$header" "COUNTER" "TIMESTAMP" "CPU(%)" "MEMORY(%)" >> "./$dest/usage.txt"
 while [[ $counter -le $timer ]]; do
   # Get the total CPU statistics, discarding the 'cpu ' prefix.
