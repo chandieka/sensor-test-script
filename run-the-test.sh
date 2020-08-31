@@ -48,7 +48,6 @@ echo "Data capture start for $hour:$min:$sec"
 echo "traffic replay start!!"
 
 # start replaying the traffic
-sudo tcpreplay -i $int --multiplier="$mult" $pcapPath/* >> ./$testName/test.log &
 tcpPID=$!;
 
 # timer
@@ -65,7 +64,7 @@ while [ $hour -ge 0 ]; do
         min=59;
         let "hour=hour-1";
 done;
-kill -s SIGINT $tcpPID;
+echo "Copying suricata stats.log"
 cp $statsPath/stats.log ./$testName/data/stats.log
 echo "Test Finished!!!"
 # finish the test...

@@ -17,6 +17,7 @@ while [[ $counter -le $timer ]]; do
   # Get Free memory
   CPU=($(sed -n 's/^cpu\s//p' /proc/stat))
   mem_free=$(cat /proc/meminfo | grep "MemFree" | grep -Eo "[0-9]*") # in kB
+  buffers=$(cat /proc/meminfo | grep "Buffers" | grep -Eo "[0-9]*")
   IDLE=${CPU[3]} # Just the idle CPU time.
 
   # Calculate the total CPU time.
