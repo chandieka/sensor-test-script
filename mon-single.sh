@@ -16,7 +16,7 @@ do
     rxbytes_new="`cat /sys/class/net/$int1/statistics/rx_bytes`";
    
     txbytes=$(( txbytes_new - txbytes_old));
-    rxbytes=$(( rxbytes_new- rxbytes_old));
+    rxbytes=$(( rxbytes_new - rxbytes_old));
     
     rxmbps=$(echo "scale=2; $rxbytes*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);

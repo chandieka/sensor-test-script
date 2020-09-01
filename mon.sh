@@ -11,14 +11,14 @@ printf "$header" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)"
 while true;
 do
     txbytes_old1="`cat /sys/class/net/$int1/statistics/tx_bytes`";
-    txbytes_old1="`cat /sys/class/net/$int2/statistics/tx_bytes`";
-    txbytes_old1="`cat /sys/class/net/$int3/statistics/tx_bytes`";
-    txbytes_old1="`cat /sys/class/net/$int4/statistics/tx_bytes`";
+    txbytes_old2="`cat /sys/class/net/$int2/statistics/tx_bytes`";
+    txbytes_old3="`cat /sys/class/net/$int3/statistics/tx_bytes`";
+    txbytes_old4="`cat /sys/class/net/$int4/statistics/tx_bytes`";
 
     rxbytes_old1="`cat /sys/class/net/$int1/statistics/rx_bytes`";
-    rxbytes_old1="`cat /sys/class/net/$int2/statistics/rx_bytes`";
-    rxbytes_old1="`cat /sys/class/net/$int3/statistics/rx_bytes`";
-    rxbytes_old1="`cat /sys/class/net/$int4/statistics/rx_bytes`";
+    rxbytes_old2="`cat /sys/class/net/$int2/statistics/rx_bytes`";
+    rxbytes_old3="`cat /sys/class/net/$int3/statistics/rx_bytes`";
+    rxbytes_old4="`cat /sys/class/net/$int4/statistics/rx_bytes`";
     
     sleep 1;
     
