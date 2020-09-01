@@ -32,6 +32,10 @@ if [ ! -d "$logPath" ];
 then
     mkdir ./$testName;
     mkdir ./$testName/data/
+    mkdir ./$testName/data/eth1/
+    mkdir ./$testName/data/eth2/
+    mkdir ./$testName/data/eth3/
+    mkdir ./$testName/data/eth4/
 else
     echo "Test already existed!!"
     # exit;
@@ -44,7 +48,7 @@ fi
 # - Network Bandwitdh on an interface
 
 echo "Data capture start for $hour:$min:$sec"
-./mon-net.sh $recordTime "./$testName/data/$int1"
+./mon-net.sh $recordTime "./$testName/data/$int1" &
 ./usage.sh $recordTime ./$testName/data &
 
 # ./resource-usage.sh $recordTime ./$testName/data/ &
@@ -67,10 +71,10 @@ done;
 
 echo "Copying suricata stats.log"
 
-cp $statsPath1/stats.log ./$testName/data/$int1/stats.log
-cp $statsPath1/stats.log ./$testName/data/$int2/stats.log
-cp $statsPath1/stats.log ./$testName/data/$int3/stats.log
-cp $statsPath1/stats.log ./$testName/data/$int4/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth1/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth2/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth3/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth4/stats.log
 
 echo "Test Finished!!!"
 # finish the test...
