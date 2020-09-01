@@ -10,8 +10,8 @@ int4="eth4"
 
 header="%-7s %-8s %-18s %-9s %-9s\n"
 format="%-7s %-8s %-18s %-9s %-9s\n"
-printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" 
-# printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" >> ./$dest/network.txt
+# printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" 
+printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" >> ./$dest/network.txt
 while [[ $counter -le $capint ]];
 do
     txbytes_old1="`cat /sys/class/net/$int1/statistics/tx_bytes`";
@@ -24,7 +24,7 @@ do
     rxbytes_old1="`cat /sys/class/net/$int3/statistics/rx_bytes`";
     rxbytes_old1="`cat /sys/class/net/$int4/statistics/rx_bytes`";
     
-    sleep 1;
+    sleep $1;
     
     txbytes_new1="`cat /sys/class/net/$int1/statistics/tx_bytes`";
     txbytes_new2="`cat /sys/class/net/$int2/statistics/tx_bytes`";
@@ -48,7 +48,7 @@ do
     rxmbps=$(echo "scale=2; $rxbytes*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);
 
-    printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")"  "$txmbps" "$rxmbps"
-    # printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$txmbps" "$rxmbps" >> ./$dest/network.txt
+    # printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")"  "$txmbps" "$rxmbps"
+    printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$txmbps" "$rxmbps" >> ./$dest/network.txt
     counter=$((counter + 1))
 done 
