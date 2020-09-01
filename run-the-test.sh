@@ -15,13 +15,6 @@ statsPath2="/nsm/sensor_data/virtualsocdemo-sensor-eth2/"
 statsPath3="/nsm/sensor_data/virtualsocdemo-sensor-eth3/"
 statsPath4="/nsm/sensor_data/virtualsocdemo-sensor-eth4/"
 time="1"     # one second interval for data capture
-
-# network interface
-int1="eth1"
-int2="eth2"
-int3="eth3"
-int4="eth4"
-
 mult="1.0" # replay speed multiplier
 recordTime=$((20 + 3)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
 
@@ -51,10 +44,7 @@ fi
 # - Network Bandwitdh on an interface
 
 echo "Data capture start for $hour:$min:$sec"
-./mon-net.sh $recordTime "./$testName/data/$int1" $int1 & 
-./mon-net.sh $recordTime "./$testName/data/$int2" $int2 & 
-./mon-net.sh $recordTime "./$testName/data/$int3" $int3 & 
-./mon-net.sh $recordTime "./$testName/data/$int4" $int4 & 
+./mon-net.sh $recordTime "./$testName/data/$int1"
 ./usage.sh $recordTime ./$testName/data &
 
 # ./resource-usage.sh $recordTime ./$testName/data/ &
