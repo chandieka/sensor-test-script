@@ -1,8 +1,8 @@
 #!/bin/bash
-int1="$1"
-int2="$2"
-int3="$3"
-int4="$4"
+int1="eth1"
+int2="eth2"
+int3="eth3"
+int4="eth4"
 
 header="%-8s %-18s %-9s %-9s\n"
 format="%-8s %-18s %-9s %-9s\n"
