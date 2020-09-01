@@ -8,10 +8,10 @@ counter=0
 PREV_TOTAL=0
 PREV_IDLE=0
 mem_total=$(cat /proc/meminfo | grep "MemTotal" | grep -Eo "[0-9]*") # in kB
-header="%-7s %-28s %-8s %-8s\n"
-format="%-7s %-28s %-8s %-8s\n"
-# printf "$header" "COUNTER" "TIMESTAMP" "CPU(%)" "MEMORY(%)"
-printf "$header" "COUNTER" "TIMESTAMP" "CPU(%)" "MEMORY(%)" >> "./$dest/usage.txt"
+header="%-7s %-8s %-18s %-8s %-8s\n"
+format="%-7s %-8s %-18s %-8s %-8s\n"
+# printf "$header" "COUNTER" "DATE" "TIMESTAMP" "CPU(%)" "MEMORY(%)"
+printf "$header" "COUNTER" "DATE" "TIMESTAMP" "CPU(%)" "MEMORY(%)" >> "./$dest/usage.txt"
 while [[ $counter -le $timer ]]; do
   # Get the total CPU statistics, discarding the 'cpu ' prefix.
   # Get Free memory
@@ -33,8 +33,8 @@ while [[ $counter -le $timer ]]; do
   # Calculate the memory usage
   mem_usage=$(echo "scale=2; (($mem_total-$mem_free)*100)/$mem_total" | bc)
   # output the data
-  # printf "$format" "$counter" "$(date +"%D %T:%N")" "$DIFF_USAGE%" "$mem_usage%"
-  printf "$format" "$counter" "$(date +"%D %T:%N")" "$DIFF_USAGE%" "$mem_usage%" >> "./$dest/usage.txt"
+  # printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%"
+  printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%" >> "./$dest/usage.txt"
   # Remember the total and idle CPU times for the next check.
   PREV_TOTAL="$TOTAL"
   PREV_IDLE="$IDLE"

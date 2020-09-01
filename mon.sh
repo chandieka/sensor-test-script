@@ -1,5 +1,4 @@
 #!/bin/bash
-counter=0
 int=$1
 while true;
 do
@@ -17,5 +16,5 @@ do
     rxmbps=$(echo "scale=2; $rxbytes*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes*8/1000000" | bc);
 
-    echo "$counter $(date +"%D %T:%N") TX $txmbps Mbps RX $rxmbps Mbps"
+    echo "$(date +"%D %T.%N") TX $txmbps Mbps RX $rxmbps Mbps"
 done 

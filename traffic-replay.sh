@@ -9,8 +9,8 @@ pcap2=""
 pcap3=""
 pcap4=""
 
-sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 $pcap2 $pcap3 $pcap4 &;
-sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 $pcap2 $pcap3 $pcap4 &; 
-sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 $pcap2 $pcap3 $pcap4 &; 
-sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 $pcap2 $pcap3 $pcap4 &; 
-sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 $pcap2 $pcap3 $pcap4 &; 
+sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 &;
+sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 &; 
+sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 &; 
+sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 &; 
+sudo timeout captime tcpreplay -i $int -K --loop 10000 --mbps $mbps $pcap1 &; 

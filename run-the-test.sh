@@ -10,9 +10,18 @@ clear;
 
 # constant 
 pcapPath="/home/user/sample_data/" # Directory where all the pcap will be replay at
-statsPath="/nsm/sensor_data/virtual;socdemo-sensor-eth1/"
+statsPath1="/nsm/sensor_data/virtualsocdemo-sensor-eth1/"
+statsPath2="/nsm/sensor_data/virtualsocdemo-sensor-eth2/"
+statsPath3="/nsm/sensor_data/virtualsocdemo-sensor-eth3/"
+statsPath4="/nsm/sensor_data/virtualsocdemo-sensor-eth4/"
 time="1"     # one second interval for data capture
-int="eth1"  # network interface
+
+# network interface
+int1="eth1"
+int2="eth2"
+int3="eth3"
+int4="eth4"
+
 mult="1.0" # replay speed multiplier
 recordTime=$((20 + 3)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
 
@@ -26,7 +35,8 @@ read -p "Give a name to the test run? " testName;
 
 # directory of test results
 logPath="$(pwd)/$testName";
-if [ ! -d "$logPath" ]; then
+if [ ! -d "$logPath" ];
+then
     mkdir ./$testName;
     mkdir ./$testName/data/
 else
@@ -41,14 +51,14 @@ fi
 # - Network Bandwitdh on an interface
 
 echo "Data capture start for $hour:$min:$sec"
-./mon-net.sh $recordTime ./$testName/data/ $int & 
+./mon-net.sh $recordTime "./$testName/data/$int1" $int1 & 
+./mon-net.sh $recordTime "./$testName/data/$int2" $int2 & 
+./mon-net.sh $recordTime "./$testName/data/$int3" $int3 & 
+./mon-net.sh $recordTime "./$testName/data/$int4" $int4 & 
 ./usage.sh $recordTime ./$testName/data &
+
 # ./resource-usage.sh $recordTime ./$testName/data/ &
 # nmon -ft -s $time -c $recordTime -m ./$testName/data/ 
-echo "traffic replay start!!"
-
-# start replaying the traffic
-tcpPID=$!;
 
 # timer
 while [ $hour -ge 0 ]; do
@@ -64,7 +74,13 @@ while [ $hour -ge 0 ]; do
         min=59;
         let "hour=hour-1";
 done;
+
 echo "Copying suricata stats.log"
-cp $statsPath/stats.log ./$testName/data/stats.log
+
+cp $statsPath1/stats.log ./$testName/data/$int1/stats.log
+cp $statsPath1/stats.log ./$testName/data/$int2/stats.log
+cp $statsPath1/stats.log ./$testName/data/$int3/stats.log
+cp $statsPath1/stats.log ./$testName/data/$int4/stats.log
+
 echo "Test Finished!!!"
 # finish the test...
