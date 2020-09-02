@@ -21,7 +21,7 @@ newCap=$(getCapture $int)
 newLost=$(getLost $int)
 
 cap=$((newCap - oldCap));
-lost=$((newLost - oldLost));
+lost=$((newDrop - oldDrop));
 
 if [[ $cap != 0 && $lost != 0 ]]
 then
