@@ -17,8 +17,8 @@ oldLost=0
 
 while true;
 do 
-newCap=$(getCap $int)
-newLost=$(getCap $int)
+newCap=$(getCapture $int)
+newLost=$(getLost $int)
 
 cap=$((newCap - oldCap));
 lost=$((newLost - oldLost));
