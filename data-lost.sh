@@ -27,4 +27,5 @@ echo "$cap $lost";
 
 oldCap=oldCap
 newCap=newCap
+sleep 1;
 done;
