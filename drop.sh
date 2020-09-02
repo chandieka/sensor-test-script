@@ -9,9 +9,9 @@ drop() {
 
 
     echo "Interface: $1"
-    echo "Capture Packet: $capPacket"
-    echo "Drop Packet: $dropPacket"
-    echo "Percentage drop overlifetime: $percentageDrop"
+    echo "Captured Packet: $capPacket"
+    echo "Dropped Packet: $dropPacket"
+    echo "Percent dropped: $percentageDrop"
     echo ""
     echo "====================="
     echo ""
