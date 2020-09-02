@@ -36,6 +36,6 @@ do
     fi;
 
     oldCap=$newCap
-    newLost=$newLost
+    oldLost=$newLost
     sleep 1;
 done;
