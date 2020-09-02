@@ -7,9 +7,7 @@ drop() {
     b=$((dropPacket + capPacket))
     percentageDrop=$( echo "scale=2; $a/$b" | bc )
 
-    echo ""
-    echo "====================="
-    echo ""
+
     echo "Interface: $1"
     echo "Capture Packet: $capPacket"
     echo "Drop Packet: $dropPacket"
