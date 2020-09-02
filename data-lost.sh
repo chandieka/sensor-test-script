@@ -17,15 +17,18 @@ oldLost=0
 
 while true;
 do 
-newCap=$(getCap() $int)
-newLost=$(getCap() $int)
+newCap=$(getCap $int)
+newLost=$(getCap $int)
 
-cap=$((oldCap - newCap));
-lost=$((oldLost - newLost));
+cap=$((newCap - oldCap));
+lost=$((newLost - oldLost));
 
-echo "$cap $lost";
+if [[ $cap != 0 && $lost != 0 ]]
+then
+    echo "$cap $lost";
+fi;
 
-oldCap=oldCap
-newCap=newCap
+oldCap=newCap
+newCap=newOld
 sleep 1;
 done;
