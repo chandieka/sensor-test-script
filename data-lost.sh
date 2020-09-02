@@ -24,8 +24,8 @@ oldLost=0
 
 while true;
 do 
-    newCap=$(getCapture $int)
-    newLost=$(getDrop $int)
+    newCap=$(getCapture eth1 eth2 eth3 eth4)
+    newLost=$(getDrop eth1 eth2 eth3 eth4)
 
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost);
