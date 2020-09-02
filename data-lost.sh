@@ -28,7 +28,7 @@ do
     newLost=$(getDrop eth1 eth2 eth3 eth4)
 
     cap=$((newCap - oldCap));
-    lost=$((newLost - oldLost);
+    lost=$((newLost - oldLost));
 
     if [[ $cap != 0 && $lost != 0 ]]
     then
