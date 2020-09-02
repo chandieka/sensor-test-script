@@ -3,7 +3,9 @@
 drop() {
     capPacket=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep capture | tail -n 1 | cut -d '|' -f3);
     dropPacket=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
-    percentageDrop=$( echo "scale=2; ($dropPacket*100)/($dropPacket + $capPacket)" | bc )
+    a=$((dropPacket*100))
+    b=$((dropPacket + capPacket))
+    percentageDrop=$( echo "scale=2; $a/$b" | bc )
 
     echo ""
     echo "====================="
