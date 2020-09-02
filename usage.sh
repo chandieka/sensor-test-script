@@ -32,7 +32,8 @@ while [[ $counter -le $timer ]]; do
   DIFF_TOTAL=$((TOTAL-PREV_TOTAL))
   DIFF_USAGE=$(echo "scale=2; ((1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10)" | bc )
   # Calculate the memory usage
-  mem_usage=$(echo "scale=2; ((($mem_total-$mem_free)-($cached + $buffers))*100)/$mem_total" | bc)
+  a=$(( (mem_total-mem_free)-(cached + buffers) ))
+  mem_usage=$(echo "scale=2; (($a*100)/$mem_total" | bc)
   # output the data
   # printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%"
   printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%" >> "./$dest/usage.txt"
