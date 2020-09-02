@@ -21,7 +21,9 @@ getCapture(){
 
 oldCap=0
 oldLost=0
-
+format="%-11s %-20s %-20s"
+header="%-11s %-20s %-20s"
+printf $header "TIMESTAMP" "PROCESSED" "DROPPED"
 while true;
 do 
     newCap=$(getCapture eth1 eth2 eth3 eth4)
@@ -32,7 +34,7 @@ do
 
     if [[ $cap != 0 && $lost != 0 ]]
     then
-        echo "$cap $lost";
+        printf $format "$(date +"%T.%N")" $cap $lost
     fi;
 
     oldCap=$newCap

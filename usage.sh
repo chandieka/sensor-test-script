@@ -18,6 +18,7 @@ while [[ $counter -le $timer ]]; do
   CPU=($(sed -n 's/^cpu\s//p' /proc/stat))
   mem_free=$(cat /proc/meminfo | grep "MemFree" | grep -Eo "[0-9]*") # in kB
   buffers=$(cat /proc/meminfo | grep "Buffers" | grep -Eo "[0-9]*")
+  cached=$(cat /proc/meminfo | grep "Cached" | grep -Eo "[0-9]*")
   IDLE=${CPU[3]} # Just the idle CPU time.
 
   # Calculate the total CPU time.
@@ -31,7 +32,7 @@ while [[ $counter -le $timer ]]; do
   DIFF_TOTAL=$((TOTAL-PREV_TOTAL))
   DIFF_USAGE=$(echo "scale=2; ((1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10)" | bc )
   # Calculate the memory usage
-  mem_usage=$(echo "scale=2; (($mem_total-$mem_free)*100)/$mem_total" | bc)
+  mem_usage=$(echo "scale=2; ((($mem_total-$mem_free) - ($cached + $buffers))*100)/$mem_total" | bc)
   # output the data
   # printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%"
   printf "$format" "$counter" "$(date +"%D")" "$(date +"%T.%N")" "$DIFF_USAGE%" "$mem_usage%" >> "./$dest/usage.txt"
