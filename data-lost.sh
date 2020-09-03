@@ -19,10 +19,10 @@ getCapture(){
     echo $(( capPacket1 + capPacket2 + capPacket3 + capPacket4 )) ;
 }
 
-oldCap=0
-oldLost=0
-format="%-11s %-20s %-20s"
-header="%-11s %-20s %-20s"
+oldCap=0;
+oldLost=0;
+format="%-11s %-20s %-20s\n"
+header="%-11s %-20s %-20s\n"
 printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED"
 while true;
 do 
