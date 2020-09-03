@@ -21,8 +21,8 @@ getCapture(){
 
 oldCap=0;
 oldLost=0;
-format="%-18s %-20s %-20s %-15s\n"
-header="%-18s %-20s %-20s %-15s\n"
+format="%-18s %-15s %-15s %-15s\n"
+header="%-18s %-15s %-15s %-15s\n"
 printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)"
 while true;
 do 
@@ -31,7 +31,8 @@ do
 
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost));
-    dropPercent=$(( newLost/(newLost+newCap) ));
+    a=$(( newLost + newCap ))
+    dropPercent=$(( newLost/a ));
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
