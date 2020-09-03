@@ -1,5 +1,5 @@
 #! /bin/bash
-int="eth1"
+dest="$1"
 
 getDrop() {
     dropPacket1=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
@@ -27,7 +27,7 @@ oldCap=0;
 oldLost=0;
 format="%-18s %-15s %-15s %-15s\n"
 header="%-18s %-15s %-15s %-15s\n"
-printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)"
+printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)" >> ./$dest/dropped.txt
 while true;
 do 
     newCap=$(getCapture eth1 eth2 eth3 eth4 eth5 eth6)
@@ -41,7 +41,7 @@ do
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
-        printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%"
+        printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%" >> ./$dest/dropped.txt
     fi;
 
     oldCap=$newCap
