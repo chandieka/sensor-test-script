@@ -32,7 +32,7 @@ do
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost));
 
-    if [[ $cap != 0 && $lost != 0 ]]
+    if [[ $cap != 0 || $lost != 0 ]]
     then
         printf "$format" "$(date +"%T.%N")" "$cap" "$lost"
     fi;
