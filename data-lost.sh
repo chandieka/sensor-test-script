@@ -32,7 +32,8 @@ do
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost));
     a=$(( newLost + newCap ))
-    dropPercent=$(echo "scale 2; ($newLost*100)/$a" | bc);
+    b=$(( newLost * 100))
+    dropPercent=$(echo "scale 2; $b/$a" | bc);
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
