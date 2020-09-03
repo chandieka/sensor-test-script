@@ -21,3 +21,5 @@ drop eth1;
 drop eth2;
 drop eth3;
 drop eth4;
+drop eth5;
+drop eth6;
