@@ -21,8 +21,8 @@ getCapture(){
 
 oldCap=0;
 oldLost=0;
-format="%-11s %-20s %-20s\n"
-header="%-11s %-20s %-20s\n"
+format="%-20s %-20s %-20s\n"
+header="%-20s %-20s %-20s\n"
 printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED"
 while true;
 do 
