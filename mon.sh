@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 int1="eth1"
 int2="eth2"
 int3="eth3"
@@ -6,10 +6,10 @@ int4="eth4"
 int5="eth5"
 int6="eth6"
 
-header="%-8s %-18s %-9s %-9s\n"
-format="%-8s %-18s %-9s %-9s\n"
-printf "$header" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" 
-# printf "$header" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" >> ./$dest/network.txt
+header="%-7s %-8s %-18s %-9s %-9s\n"
+format="%-7s %-8s %-18s %-9s %-9s\n"
+printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" 
+# printf "$header" "COUNTER" "DATE" "TIMESTAMP" "TX(Mbps)" "RX(Mbps)" >> ./$dest/network.txt
 while true;
 do
     txbytes_old1="`cat /sys/class/net/$int1/statistics/tx_bytes`";
@@ -41,7 +41,6 @@ do
     rxbytes_new4="`cat /sys/class/net/$int4/statistics/rx_bytes`";
     rxbytes_new5="`cat /sys/class/net/$int6/statistics/rx_bytes`";
     rxbytes_new6="`cat /sys/class/net/$int5/statistics/rx_bytes`";
-
 
     txbytes_total1=$(( txbytes_new1- txbytes_old1));
     txbytes_total2=$(( txbytes_new2- txbytes_old2));
