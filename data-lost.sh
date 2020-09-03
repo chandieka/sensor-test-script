@@ -21,9 +21,9 @@ getCapture(){
 
 oldCap=0;
 oldLost=0;
-format="%-18s %-20s %-20s\n"
-header="%-18s %-20s %-20s\n"
-printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED"
+format="%-18s %-20s %-20s %-15s\n"
+header="%-18s %-20s %-20s %-15s\n"
+printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)"
 while true;
 do 
     newCap=$(getCapture eth1 eth2 eth3 eth4)
@@ -31,10 +31,11 @@ do
 
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost));
+    dropPercent=$(( newLost/(newLost+newCap) ));
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
-        printf "$format" "$(date +"%T.%N")" "$cap" "$lost"
+        printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent"
     fi;
 
     oldCap=$newCap
