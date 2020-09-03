@@ -36,9 +36,11 @@ then
     mkdir ./$testName/data/eth2/
     mkdir ./$testName/data/eth3/
     mkdir ./$testName/data/eth4/
+    mkdir ./$testName/data/eth5/
+    mkdir ./$testName/data/eth6/
 else
     echo "Test already existed!!"
-    # exit;
+    exit;
 fi
 
 # start the test..
@@ -49,7 +51,8 @@ fi
 
 echo "Data capture start for $hour:$min:$sec"
 ./mon-net.sh $recordTime "./$testName/data/$int1" &
-./usage.sh $recordTime ./$testName/data &
+./usage.sh $recordTime ./$testName/data/ &
+./data-lost.sh $record ./$testName/data/ $ 
 
 # ./resource-usage.sh $recordTime ./$testName/data/ &
 # nmon -ft -s $time -c $recordTime -m ./$testName/data/ 
@@ -75,6 +78,8 @@ cp $statsPath1/stats.log ./$testName/data/eth1/stats.log
 cp $statsPath1/stats.log ./$testName/data/eth2/stats.log
 cp $statsPath1/stats.log ./$testName/data/eth3/stats.log
 cp $statsPath1/stats.log ./$testName/data/eth4/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth5/stats.log
+cp $statsPath1/stats.log ./$testName/data/eth6/stats.log
 
 echo "Test Finished!!!"
 # finish the test...

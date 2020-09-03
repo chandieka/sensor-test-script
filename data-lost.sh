@@ -1,5 +1,6 @@
 #! /bin/bash
-dest="$1"
+capint=$1
+dest=$2
 
 getDrop() {
     dropPacket1=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
@@ -28,7 +29,7 @@ oldLost=0;
 format="%-18s %-15s %-15s %-15s\n"
 header="%-18s %-15s %-15s %-15s\n"
 printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)" >> ./$dest/dropped.txt
-while true;
+while [[ $counter -le $capint ]];
 do 
     newCap=$(getCapture eth1 eth2 eth3 eth4 eth5 eth6)
     newLost=$(getDrop eth1 eth2 eth3 eth4 eth5 eth6)
@@ -47,4 +48,5 @@ do
     oldCap=$newCap
     oldLost=$newLost
     sleep 1;
+    $counter=$(( counter + 1 ));
 done;
