@@ -48,5 +48,5 @@ do
     oldCap=$newCap
     oldLost=$newLost
     sleep 1;
-    $counter=$(( counter + 1 ));
+    counter=$(( counter + 1 ));
 done;
