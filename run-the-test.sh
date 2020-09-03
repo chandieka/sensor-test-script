@@ -51,8 +51,8 @@ fi
 
 echo "Data capture start for $hour:$min:$sec"
 ./mon-net.sh $recordTime "./$testName/data/$int1" &
-./usage.sh $recordTime ./$testName/data/ &
-./data-lost.sh $record ./$testName/data/ $ 
+./usage.sh $recordTime "./$testName/data/" &
+./data-lost.sh $record "./$testName/data/" $ 
 
 # ./resource-usage.sh $recordTime ./$testName/data/ &
 # nmon -ft -s $time -c $recordTime -m ./$testName/data/ 

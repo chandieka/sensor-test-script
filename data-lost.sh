@@ -42,7 +42,7 @@ do
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
-        printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%" >> ./$dest/dropped.txt
+        printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%" >> "./$dest/dropped.txt"
     fi;
 
     oldCap=$newCap
