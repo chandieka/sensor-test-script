@@ -3,6 +3,8 @@ int1="eth1"
 int2="eth2"
 int3="eth3"
 int4="eth4"
+int5="eth5"
+int6="eth6"
 
 header="%-8s %-18s %-9s %-9s\n"
 format="%-8s %-18s %-9s %-9s\n"
