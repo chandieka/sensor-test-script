@@ -31,6 +31,7 @@ header="%-18s %-15s %-15s %-15s\n"
 printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)" >> ./$dest/dropped.txt
 while [[ $counter -le $capint ]];
 do 
+    # Total value
     newCap=$(getCapture eth1 eth2 eth3 eth4 eth5 eth6)
     newLost=$(getDrop eth1 eth2 eth3 eth4 eth5 eth6)
 
@@ -40,7 +41,9 @@ do
     b=$(( newLost * 100))
     dropPercent=$(echo "scale=2; $b/$a" | bc);
 
-    if [[ $cap != 0 || $lost != 0 ]]
+
+
+    if [[ $cap != 0 || $lost != 0 || ]]
     then
         printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%" >> ./$dest/dropped.txt
     fi;
