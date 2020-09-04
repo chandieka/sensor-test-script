@@ -7,4 +7,5 @@ do
     newZeekTotal=$(( newZeekPkts + newZeekDrop ));
 
     echo "newZeelDrop newZeekPkts newZeekTotal"
+    sleep 1;
 done;
