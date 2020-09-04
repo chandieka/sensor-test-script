@@ -32,12 +32,12 @@ if [ ! -d "$logPath" ];
 then
     mkdir ./$testName;
     mkdir ./$testName/data/
-    mkdir ./$testName/data/eth1/
-    mkdir ./$testName/data/eth2/
-    mkdir ./$testName/data/eth3/
-    mkdir ./$testName/data/eth4/
-    mkdir ./$testName/data/eth5/
-    mkdir ./$testName/data/eth6/
+#     mkdir ./$testName/data/eth1/
+#     mkdir ./$testName/data/eth2/
+#     mkdir ./$testName/data/eth3/
+#     mkdir ./$testName/data/eth4/
+#     mkdir ./$testName/data/eth5/
+#     mkdir ./$testName/data/eth6/
 else
     echo "Test already existed!!"
     exit;
@@ -72,14 +72,14 @@ while [ $hour -ge 0 ]; do
         let "hour=hour-1";
 done;
 
-echo "Copying suricata stats.log"
+# echo "Copying suricata stats.log"
 
-cp $statsPath1/stats.log ./$testName/data/eth1/stats.log
-cp $statsPath1/stats.log ./$testName/data/eth2/stats.log
-cp $statsPath1/stats.log ./$testName/data/eth3/stats.log
-cp $statsPath1/stats.log ./$testName/data/eth4/stats.log
-cp $statsPath1/stats.log ./$testName/data/eth5/stats.log
-cp $statsPath1/stats.log ./$testName/data/eth6/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth1/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth2/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth3/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth4/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth5/stats.log
+# cp $statsPath1/stats.log ./$testName/data/eth6/stats.log
 
 echo "Test Finished!!!"
 # finish the test...
