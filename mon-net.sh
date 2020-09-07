@@ -64,8 +64,8 @@ do
     # txbytes_sum=$((txbytes_total1 + txbytes_total2 + txbytes_total3 + txbytes_total4 + txbytes_total5 + txbytes_total6))
     # rxbytes_sum=$((rxbytes_total1 + rxbytes_total2 + rxbytes_total3 + rxbytes_total4 + rxbytes_total5 + rxbytes_total6))
    
-    txbytes_sum=$((txbytes_total1))
-    rxbytes_sum=$((rxbytes_total1))
+    txbytes_sum=$txbytes_total1
+    rxbytes_sum=$rxbytes_total1
     
     rxmbps=$(echo "scale=2; $rxbytes_sum*8/1000000" | bc);
     txmbps=$(echo "scale=2; $txbytes_sum*8/1000000" | bc);

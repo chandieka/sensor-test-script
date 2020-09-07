@@ -3,7 +3,7 @@ capint=$1
 dest=$2
 
 getDrop() {
-    # dropPacket1=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
+    dropPacket1=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$1/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
     # dropPacket2=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$2/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
     # dropPacket3=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$3/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
     # dropPacket4=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$4/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
