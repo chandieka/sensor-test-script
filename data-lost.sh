@@ -44,8 +44,6 @@ do
     b=$(( newLost * 100))
     dropPercent=$(echo "scale=2; $b/$a" | bc);
 
-
-
     if [[ $cap != 0 || $lost != 0 ]]
     then
         printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%" >> ./$dest/dropped.txt
