@@ -10,7 +10,7 @@ getDrop() {
     # dropPacket5=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$5/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
     # dropPacket6=$(cat /nsm/sensor_data/virtualsocdemo-sensor-$6/stats.log | grep drops | tail -n 1 | cut -d '|' -f3);
 
-    # echo $(( dropPacket1 + dropPacket2 + dropPacket3 + dropPacket4 + dropPacket5  + dropPacket6 ));\
+    # echo $(( dropPacket1 + dropPacket2 + dropPacket3 + dropPacket4 + dropPacket5  + dropPacket6 ));
     echo dropPacket1;
 
 }
@@ -35,8 +35,8 @@ printf "$header" "TIMESTAMP" "PROCESSED" "DROPPED" "OVERALL DROPPED(%)" >> ./$de
 while [[ $counter -le $capint ]];
 do 
     # Total value
-    newCap=$(getCapture eth1 eth2 eth3 eth4 eth5 eth6)
-    newLost=$(getDrop eth1 eth2 eth3 eth4 eth5 eth6)
+    newCap=$(getCapture eth1)
+    newLost=$(getDrop eth1)
 
     cap=$((newCap - oldCap));
     lost=$((newLost - oldLost));
