@@ -40,10 +40,10 @@ do
     lost=$((newLost - oldLost));
     a=$(( newLost + newCap ))
     b=$(( newLost * 100))
-    dropPercent=$(echo "scale=2; $b/$a" | bc);
 
     if [[ $cap != 0 || $lost != 0 ]]
     then
+        dropPercent=$(echo "scale=2; $b/$a" | bc);
         printf "$format" "$(date +"%T.%N")" "$cap" "$lost" "$dropPercent%"
     fi;
 
