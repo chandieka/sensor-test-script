@@ -10,10 +10,10 @@ clear;
 
 # constant 
 pcapPath="/home/user/sample_data/" # Directory where all the pcap will be replay at
-statsPath1="/nsm/sensor_data/virtualsocdemo-sensor-eth1/"
-statsPath2="/nsm/sensor_data/virtualsocdemo-sensor-eth2/"
-statsPath3="/nsm/sensor_data/virtualsocdemo-sensor-eth3/"
-statsPath4="/nsm/sensor_data/virtualsocdemo-sensor-eth4/"
+# statsPath1="/nsm/sensor_data/virtualsocdemo-sensor-eth1/"
+# statsPath2="/nsm/sensor_data/virtualsocdemo-sensor-eth2/"
+# statsPath3="/nsm/sensor_data/virtualsocdemo-sensor-eth3/"
+# statsPath4="/nsm/sensor_data/virtualsocdemo-sensor-eth4/"
 time="1"     # one second interval for data capture
 mult="1.0" # replay speed multiplier
 recordTime=$((15 * 60)) # duration of the data capture and traffic replay (add 3 second to consider the prep time of tcpreplay)
